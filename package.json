@@ -1,7 +1,6 @@
 {
   "name": "@winter-love/vue2",
   "version": "0.0.1",
-  "private": true,
   "description": "Javascript utils",
   "keywords": [
     "typescript",
