@@ -29,6 +29,9 @@
     "prepare": "tsup --dts",
     "typecheck": "tsc --noEmit"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
   },
   "devDependencies": {
