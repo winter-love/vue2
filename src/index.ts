@@ -24,4 +24,6 @@ export const h = (element, props, slot) => {
 
 export default Vue
 
+export const Vue2 = Vue
+
 export const version = '2.7.14'
