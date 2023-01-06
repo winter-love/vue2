@@ -1,5 +1,6 @@
 import Vue, {h as _h} from 'vue'
 export * from 'vue'
+export * from 'vue-router'
 export type {VueConstructor} from 'vue/types/vue'
 export const isVue2 = true
 export const isVue3 = false

@@ -38,6 +38,7 @@ specifiers:
   tsup: ^6.5.0
   typescript: ^4.9.4
   vue: 2.7.14
+  vue-router: ^3.6.5
   vue-template-compiler: ^2.7.14
 
 devDependencies:
@@ -78,6 +79,7 @@ devDependencies:
   tsup: 6.5.0_tig6ii67insn3xlrhalbes73m4
   typescript: 4.9.4
   vue: 2.7.14
+  vue-router: 3.6.5_vue@2.7.14
   vue-template-compiler: 2.7.14
 
 packages:
@@ -6275,6 +6277,14 @@ packages:
       semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vue-router/3.6.5_vue@2.7.14:
+    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    peerDependencies:
+      vue: ^2
+    dependencies:
+      vue: 2.7.14
     dev: true
 
   /vue-template-compiler/2.7.14:
