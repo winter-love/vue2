@@ -26,4 +26,8 @@ export default Vue
 
 export const Vue2 = Vue
 
+export const createApp = () => {
+  throw new Error('you do not use createApp in Vue2')
+}
+
 export const version = '2.7.14'
