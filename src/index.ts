@@ -34,8 +34,19 @@ export const createApp = () => {
 
 export const version = '2.7.14'
 
-export const createRouter = () => {
+const throwError = () => {
   throw new Error('you do not use createApp in VueRouter3')
+}
+export const createRouter = () => {
+  throwError()
+}
+
+export const createMemoryHistory = () => {
+  throwError()
+}
+
+export const createWebHistory = () => {
+  throwError()
 }
 
 export {VueRouter2}
