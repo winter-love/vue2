@@ -8,20 +8,50 @@ export const isVue3 = false
 
 export const createElement = _h
 
+const StartOnRegex = /^on[A-Z]/u
+
+const getEvent = (props: Record<string, any>) => {
+  return Object.fromEntries(
+    Object.entries(props)
+      .filter(([key]) => StartOnRegex.test(key))
+      .map(([key, value]) => {
+        return [key.replace(/^on/u, '').toLowerCase(), value]
+      }),
+  )
+}
+
+const getProps = (props: Record<string, any>, propsOptions?: Record<string, any> | string[]) => {
+  const _keys = Array.isArray(propsOptions) ? propsOptions : Object.keys(propsOptions)
+  return Object.fromEntries(_keys.map((key) => [key, props[key]]))
+}
+
+const removeProps = (props: Record<string, any>, propsOptions?: Record<string, any> | string[]) => {
+  const _keys = Array.isArray(propsOptions) ? propsOptions : Object.keys(propsOptions)
+  return {
+    ...props,
+    ...Object.fromEntries(_keys.map((key) => [key])),
+  }
+}
+
 export const h = (element, props, slot) => {
-  const _props = slot === undefined ? {} : props
+  const _rawProps = slot === undefined ? {} : props
+  const events = getEvent(_rawProps)
   const _slot = slot === undefined ? props : slot
+  const propsOptions = typeof element == 'string' ? [] : element.props
+  const _props = getProps(_rawProps, propsOptions)
+  const domProps = removeProps(_rawProps, propsOptions)
+  const data = {domProps, on: events, props: _props}
   if (Array.isArray(_slot)) {
-    return createElement(element, {props: _props}, _slot)
+    return createElement(element, data, _slot)
   }
   if (typeof _slot === 'object') {
-    return createElement(element, {props: _props, scopedSlots: _slot})
+    return createElement(element, {...data, scopedSlots: _slot})
   }
 
   if (typeof _slot === 'function') {
-    return createElement(element, {props: _props, scopedSlots: {default: _slot}})
+    return createElement(element, {...data, scopedSlots: {default: _slot}})
   }
-  return createElement(element, {props: _props}, _slot)
+  return createElement(element, data, _slot)
 }
 
 export default Vue
