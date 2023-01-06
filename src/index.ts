@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 import Vue, {h as _h} from 'vue'
 import VueRouter2 from 'vue-router'
 export * from 'vue'
@@ -11,13 +12,24 @@ export const createElement = _h
 const StartOnRegex = /^on[A-Z]/u
 
 const getEvent = (props: Record<string, any>) => {
-  return Object.fromEntries(
-    Object.entries(props)
-      .filter(([key]) => StartOnRegex.test(key))
-      .map(([key, value]) => {
-        return [key.replace(/^on/u, '').toLowerCase(), value]
-      }),
-  )
+  const events = []
+  const leftProps = []
+
+  Object.entries(props).forEach((value) => {
+    const [key] = value
+    if (StartOnRegex.test(key)) {
+      events.push(value)
+    } else {
+      leftProps.push(value)
+    }
+  })
+
+  return {
+    events: Object.fromEntries(
+      events.map(([key, value]) => [key.replace(/^on/u, '').toLowerCase(), value]),
+    ),
+    leftProps: Object.fromEntries(leftProps),
+  }
 }
 
 const getProps = (props: Record<string, any>, propsOptions?: Record<string, any> | string[]) => {
@@ -35,12 +47,12 @@ const removeProps = (props: Record<string, any>, propsOptions?: Record<string, a
 
 export const h = (element, props, slot) => {
   const _rawProps = slot === undefined ? {} : props
-  const events = getEvent(_rawProps)
+  const {events, leftProps} = getEvent(_rawProps)
   const _slot = slot === undefined ? props : slot
   const propsOptions = typeof element == 'string' ? [] : element.props
-  const _props = getProps(_rawProps, propsOptions)
-  const domProps = removeProps(_rawProps, propsOptions)
-  const data = {domProps, on: events, props: _props}
+  const _props = getProps(leftProps, propsOptions)
+  const attrs = removeProps(leftProps, propsOptions)
+  const data = {attrs, on: events, props: _props}
   if (Array.isArray(_slot)) {
     return createElement(element, data, _slot)
   }
