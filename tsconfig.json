@@ -3,7 +3,6 @@
   "compilerOptions": {
     "allowJs": true,
     "jsx": "preserve",
-    "noEmit": true,
     "rootDir": ".",
     "sourceMap": true,
     "esModuleInterop": true,

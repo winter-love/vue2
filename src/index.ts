@@ -34,4 +34,8 @@ export const createApp = () => {
 
 export const version = '2.7.14'
 
+export const createRouter = () => {
+  throw new Error('you do not use createApp in VueRouter3')
+}
+
 export {VueRouter2}
