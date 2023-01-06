@@ -1,4 +1,5 @@
 import Vue, {h as _h} from 'vue'
+import VueRouter2 from 'vue-router'
 export * from 'vue'
 export * from 'vue-router'
 export type {VueConstructor} from 'vue/types/vue'
@@ -32,3 +33,5 @@ export const createApp = () => {
 }
 
 export const version = '2.7.14'
+
+export {VueRouter2}
