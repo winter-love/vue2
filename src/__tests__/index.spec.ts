@@ -73,4 +73,17 @@ describe('vue h', () => {
     expect(wrapper.attributes()).toEqual({title: 'hello'})
     expect(wrapper.text()).toBe('value')
   })
+
+  it('should render class', () => {
+    const Component = defineComponent({
+      props: ['name'],
+      setup: () => {
+        return () => h('span', {class: ['foo', 'bar']}, 'hello')
+      },
+    })
+    const {wrapper} = setup({name: 'foo'}, Component)
+
+    expect(wrapper.attributes()).toEqual({class: 'foo bar', title: 'hello'})
+    expect(wrapper.text()).toBe('hello')
+  })
 })

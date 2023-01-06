@@ -1,6 +1,6 @@
 {
   "name": "@winter-love/vue2",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Javascript utils",
   "keywords": [
     "typescript",
@@ -30,7 +30,9 @@
     "prepare": "tsup --dts",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "clsx": "^1.2.1"
+  },
   "devDependencies": {
     "vue-router": "^3.6.5",
     "@types/jest": "^29.2.4",

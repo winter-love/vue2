@@ -1,4 +1,5 @@
 /* eslint-disable unicorn/prevent-abbreviations */
+import clsx from 'clsx'
 import Vue, {h as _h} from 'vue'
 import VueRouter2 from 'vue-router'
 export * from 'vue'
@@ -52,7 +53,11 @@ export const h = (element, props, slot) => {
   const propsOptions = typeof element == 'string' ? [] : element.props
   const _props = getProps(leftProps, propsOptions)
   const attrs = removeProps(leftProps, propsOptions)
-  const data = {attrs, on: events, props: _props}
+  const data = {
+    attrs: {...attrs, class: attrs.class ? clsx(attrs.class) : undefined},
+    on: events,
+    props: _props,
+  }
   if (Array.isArray(_slot)) {
     return createElement(element, data, _slot)
   }

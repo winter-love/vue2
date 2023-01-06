@@ -20,6 +20,7 @@ specifiers:
   babel-jest: ^29.3.1
   babel-plugin-module-resolver: ^4.1.0
   babel-plugin-transform-typescript-metadata: ^0.3.2
+  clsx: ^1.2.1
   eslint: 8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-import-resolver-typescript: ^3.5.2
@@ -42,6 +43,9 @@ specifiers:
   vue: 2.7.14
   vue-router: ^3.6.5
   vue-template-compiler: ^2.7.14
+
+dependencies:
+  clsx: 1.2.1
 
 devDependencies:
   '@babel/core': 7.20.5
@@ -2804,6 +2808,11 @@ packages:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /co/4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
